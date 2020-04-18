@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substitution Cipher</title>
+<link rel="stylesheet" href="style.css">
+   <style>
+       *{
+           margin:0px;
+           padding:0px;
+           background-color: azure;
+       }
+       body{
+           margin:0px;
+           padding: 0px;
+       }
+       .center{
+           text-align: center;
+       }
+       h1{
+        font-size: 40px;
+    margin: 0px;
+    font-family: unset;
+    padding: 38px;
+    background-color: bisque;
+    font-weight: bolder;
+
+       }
+       h2,h3{
+        font-size: 30px;
+        
+        background-color: rosybrown;
+    font-family: unset;
+    
+   
+    font-weight: bolder;
+
+       }
+.formed{
+    margin-top: 40px;
+    padding: 25px;
+    border: 5px bold rosybrown;
+    border-radius: 15px;
+    background-color: rosybrown;
+   width: 100%;
+   height: 80%;
+}
+@media( max-width:980){
+    .formed{
+        margin-top:80px;;
+    }
+}
+#str,#string{
+    height: 50px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;;
+}
+
+#output{
+   margin:10px;
+   padding:30px;
+    width: 100%;
+    
+    background-color: slategray;
+    font-size: 30px;
+    color:red;
+}
+   </style>
+    
+</head>
+<body>
+   <div class="container-fluid  ">
+           <h1 class="center ">Substitution Cipher</h1>
+       
+       <div class="row rowstyle">
+           <div class="col-md-12 col-lg-6  center">
+            <div class="formed">
+                <h2>Enter a String to Encrypt:</h2> <br>
+                <input type="text"  id="str" placeholder="Enter string to encrypt"/> <br> 
+                <input type = "submit" class="btn btn-large btn-primary btn-block" onclick="encrypt()" /> <br>
+            </div> <hr>
+           </div>
+           <div class="col-md-12 col-lg-6 center">
+            <div class="formed">
+                <h2>Enter a String to Decrypt</h2> <br>
+                <input type="text" id="string"
+                placeholder="Enter String to decrypt" /> <br>
+                <input type = "submit"  class="btn btn-large btn-primary btn-block" onclick="decrypt()" /> <br>
+            </div>
+           </div>
+       </div> <br>
+      
+    
+   </div>
+   <div class="row">
+    <div class="col-sm-12">
+       
+         
+               <p class="center" > OUTPUT
+                   <div  id="output" ></div></p>
+              
+         
+
+        
+    </div>
+
+</div>
+   <footer>
+    <h1 class="center fix-bottom" style="font-size: 23px;" >Bablu Bambal </h1>
+   </footer>
+</body>
+<script>
+     var a = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
+        var b = ['z','y','x','w','v','u','t','s','r','q','p','o','n','m','l','k','j','i','h','g','f','e','d','c','b','a',' '];
+
+    function encrypt(){
+       
+        var encrypt = "";
+
+        var str = document.getElementById('str').value;
+        str = str.toLowerCase();
+    //  console.log(typeof(str));
+      
+        for(let i = 0; i<str.length;i++){
+            let c = str.charAt(i);
+        //  console.log(c);
+           let s = a.indexOf(c);
+          // console.log(s);
+        //    console.log(typeof(s));
+           
+         
+         encrypt =  encrypt+b[s];
+//console.log(encrypt);
+         
+
+        }
+
+    // console.log(encrypt);
+        // var i =0;
+        
+       document.getElementById('output').innerHTML = "<h3> Encrypted Message is : "+ encrypt +"</h3>";
+    document.getElementById('str').value  = "";
+    
+
+        }
+
+        function decrypt(){
+       
+        var decrypt = "";
+
+        var string = document.getElementById('string').value;
+        // str = str.toLowerCase();
+    //  console.log(typeof(str));
+      
+        for(let i = 0; i<string.length;i++){
+            let c = string.charAt(i);
+        //  console.log(c);
+           let s = b.indexOf(c);
+          // console.log(s);
+        //    console.log(typeof(s));
+           
+         
+         decrypt =  decrypt+a[s];
+//console.log(encrypt);
+         
+
+        }
+
+     //console.log(encrypt);
+        // var i =0;
+        
+       document.getElementById('output').innerHTML = "<h3 class='output'> Decrypted Message is : "+ decrypt +"</h3>";
+    document.getElementById('string').value  = "";
+    
+
+        }
+</script>
+</html>
